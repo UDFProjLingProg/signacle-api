@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.UDFProjLingProg.signacle.entities.AbstractEntity;
-import org.UDFProjLingProg.signacle.entities.DTO.AbstractEntityDTO;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import org.UDFProjLingProg.signacle.mapper.GenericEntityMapper;
 import org.UDFProjLingProg.signacle.service.GenericService;
 import org.springframework.data.jpa.repository.JpaRepository;

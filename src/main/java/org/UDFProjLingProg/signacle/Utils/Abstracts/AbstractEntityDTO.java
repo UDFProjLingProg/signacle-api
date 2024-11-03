@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.entities.DTO;
+package org.UDFProjLingProg.signacle.Utils.Abstracts;
 
 import org.UDFProjLingProg.signacle.constants.UtilsConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;

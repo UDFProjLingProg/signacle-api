@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.entities;
+package org.UDFProjLingProg.signacle.Utils.Abstracts;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

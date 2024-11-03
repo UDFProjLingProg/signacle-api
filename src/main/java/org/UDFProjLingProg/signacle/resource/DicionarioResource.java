@@ -1,6 +1,6 @@
 package org.UDFProjLingProg.signacle.resource;
 
-import org.UDFProjLingProg.signacle.entities.DTO.LibraDto;
+import org.UDFProjLingProg.signacle.DTO.LibraDto;
 import org.UDFProjLingProg.signacle.resource.GenericResource;
 import org.UDFProjLingProg.signacle.service.GenericService;
 import org.springframework.web.bind.annotation.RequestMapping;

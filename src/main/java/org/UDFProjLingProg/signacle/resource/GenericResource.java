@@ -3,7 +3,8 @@ package org.UDFProjLingProg.signacle.resource;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import org.UDFProjLingProg.signacle.entities.DTO.AbstractEntityDTO;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import org.UDFProjLingProg.signacle.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
