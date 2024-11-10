@@ -4,8 +4,8 @@ import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import java.util.UUID;
 
 public class UserDto extends AbstractEntityDTO {
-    private String username;
+    private String firstName;
+    private String lastName;
+    private String  email;
     private String password;
-    private String name;
-    private UUID id_role;
 }

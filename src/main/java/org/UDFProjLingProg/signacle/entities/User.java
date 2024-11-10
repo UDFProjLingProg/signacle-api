@@ -20,19 +20,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_user", schema = SchemaConstants.LIBRAS)
-@AttributeOverride(name = "id", column = @Column(name = "id_evento"))
+@Table(name = "tb_users", schema = SchemaConstants.LIBRAS)
+@AttributeOverride(name = "id", column = @Column(name = "id_user"))
 public class User extends AbstractEntity {
-    @Column(name= "username")
-    private String username;
+    @Column(name= "first_name")
+    private String firstName;
+
+    @Column(name= "last_name")
+    private String lastName;
+
+    @Column(name= "email")
+    private String email;
 
     @Column(name= "password")
     private String password;
-
-    @Column(name= "name")
-    private String name;
-    
-    @Column(name= "id_role")
-    private UUID id_role;
 }
 

@@ -14,9 +14,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class LibraDto extends AbstractEntityDTO{
-    private String nameVideo;
-
-    private String urlVideo;
-
-    private Integer description;
+    private String palavra;
 }
