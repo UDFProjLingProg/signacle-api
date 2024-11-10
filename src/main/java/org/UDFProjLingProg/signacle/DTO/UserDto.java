@@ -1,7 +1,6 @@
 package org.UDFProjLingProg.signacle.DTO;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

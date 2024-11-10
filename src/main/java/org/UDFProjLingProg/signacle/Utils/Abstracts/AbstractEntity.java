@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import org.UDFProjLingProg.signacle.constants.UtilsConstants;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 import lombok.Data;
 import lombok.ToString;
