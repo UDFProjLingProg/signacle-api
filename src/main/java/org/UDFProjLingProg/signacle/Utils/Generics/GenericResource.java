@@ -1,11 +1,10 @@
-package org.UDFProjLingProg.signacle.resource;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-import org.UDFProjLingProg.signacle.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.UUID;

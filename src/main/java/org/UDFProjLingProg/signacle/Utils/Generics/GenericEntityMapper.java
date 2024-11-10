@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.mapper;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 import java.util.List;
 

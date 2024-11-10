@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.service;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 import java.util.List;
 import java.util.Optional;

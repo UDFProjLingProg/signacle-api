@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.service.impl;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 
 import java.time.LocalDateTime;
@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-import org.UDFProjLingProg.signacle.mapper.GenericEntityMapper;
-import org.UDFProjLingProg.signacle.service.GenericService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
