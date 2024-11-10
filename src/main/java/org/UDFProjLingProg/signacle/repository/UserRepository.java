@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
-    @Query("SELECT * FROM tb_users")
+    @Query("SELECT u FROM User u")
     List<User> findAll();
 }

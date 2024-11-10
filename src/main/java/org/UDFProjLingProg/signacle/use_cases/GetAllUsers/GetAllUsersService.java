@@ -9,6 +9,9 @@ import org.UDFProjLingProg.signacle.mapper.UserMapper;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
 import org.UDFProjLingProg.signacle.use_cases.interfaces.IUserService;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class GetAllUsersService extends GenericServiceImpl<User, UserDto>  implements 
 IUserService{
     private final UserRepository repository;
