@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.use_cases.GetAllUsers;
+package org.UDFProjLingProg.signacle.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -14,8 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 @Tag(name = "Users", description = "Listagem de Usuarios")
-public class GetAllUsersController extends GenericResource<UserDto, GetAllUsersController> {
-    public GetAllUsersController(final GenericService<UserDto> service){
+public class UsersController extends GenericResource<UserDto, UsersController> {
+    public UsersController(final GenericService<UserDto> service){
         super(service, "api/users");
     }
     
