@@ -1,20 +1,20 @@
-package org.UDFProjLingProg.signacle.service;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 import java.util.List;
 import java.util.Optional;
-import org.UDFProjLingProg.signacle.entities.DTO.AbstractEntityDTO;
+import java.util.UUID;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 
 public interface GenericService<D extends AbstractEntityDTO> {
 
     D save(D d) throws Exception;
 
-    Optional<D> findOneById(Long id);
+    Optional<D> findOneById(UUID id);
 
-    void delete(Long id) throws Exception;
+    void delete(UUID id) throws Exception;
 
     List<D> findAll();
 
     List<D> diffBetweenBasedOnId(List<D> aList, List<D> bList);
-
-
 }

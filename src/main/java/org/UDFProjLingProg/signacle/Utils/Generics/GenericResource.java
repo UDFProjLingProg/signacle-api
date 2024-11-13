@@ -1,12 +1,13 @@
-package org.UDFProjLingProg.signacle.resource;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import org.UDFProjLingProg.signacle.entities.DTO.AbstractEntityDTO;
-import org.UDFProjLingProg.signacle.service.GenericService;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import java.util.UUID;
 
 public class GenericResource<D extends AbstractEntityDTO, R> {
 
@@ -32,14 +33,14 @@ public class GenericResource<D extends AbstractEntityDTO, R> {
             .body(result.toString());
     }
 
-    public ResponseEntity<D> findOne(Long id) {
+    public ResponseEntity<D> findOne(UUID id) {
         Optional<D> entity = this.service.findOneById(id);
         return entity.map(d -> ResponseEntity.status(HttpStatus.OK).body(d))
             .orElseGet(() -> ResponseEntity.status(
                 HttpStatus.NO_CONTENT).body(null));
     }
 
-    public ResponseEntity<String> delete(Long id) throws Exception {
+    public ResponseEntity<String> delete(UUID id) throws Exception {
         this.service.delete(id);
         return ResponseEntity.noContent().build();
     }

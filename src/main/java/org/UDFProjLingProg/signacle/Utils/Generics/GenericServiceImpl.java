@@ -1,26 +1,25 @@
-package org.UDFProjLingProg.signacle.service.impl;
+package org.UDFProjLingProg.signacle.Utils.Generics;
 
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.UDFProjLingProg.signacle.entities.AbstractEntity;
-import org.UDFProjLingProg.signacle.entities.DTO.AbstractEntityDTO;
-import org.UDFProjLingProg.signacle.mapper.GenericEntityMapper;
-import org.UDFProjLingProg.signacle.service.GenericService;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.UUID;
 
 public abstract class GenericServiceImpl<E extends AbstractEntity, D extends AbstractEntityDTO> implements
     GenericService<D> {
 
-    private final JpaRepository<E, Long> repository;
+    private final JpaRepository<E, UUID> repository;
 
     private final GenericEntityMapper<D, E> mapper;
 
     public GenericServiceImpl(
-        JpaRepository<E, Long> repository, GenericEntityMapper<D, E> mapper) {
+        JpaRepository<E, UUID> repository, GenericEntityMapper<D, E> mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -31,7 +30,7 @@ public abstract class GenericServiceImpl<E extends AbstractEntity, D extends Abs
     }
 
     @Override
-    public Optional<D> findOneById(Long id) {
+    public Optional<D> findOneById(UUID id) {
         if (id == null) {
             return Optional.empty();
         }
@@ -43,7 +42,7 @@ public abstract class GenericServiceImpl<E extends AbstractEntity, D extends Abs
     }
 
     @Override
-    public void delete(Long id) throws Exception {
+    public void delete(UUID id) throws Exception {
         Optional<D> optional = this.findOneById(id);
         this.executeDelete(optional);
     }
