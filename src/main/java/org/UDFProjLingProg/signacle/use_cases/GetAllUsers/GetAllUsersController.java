@@ -18,6 +18,7 @@ public class GetAllUsersController extends GenericResource<UserDto, GetAllUsersC
     public GetAllUsersController(final GenericService<UserDto> service){
         super(service, "api/users");
     }
+    
     @GetMapping
     public ResponseEntity<List<UserDto>> list () {
         return super.findAll();
