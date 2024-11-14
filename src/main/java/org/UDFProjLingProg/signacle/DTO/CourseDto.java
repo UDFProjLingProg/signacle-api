@@ -19,7 +19,7 @@ import lombok.ToString;
 public class CourseDto extends AbstractEntityDTO{
 
     private String name;
-    private String url_image;
-    private String url_video;
-    private Timestamp created_date;
+    private String urlImage;
+    private String urlVideo;
+    private Timestamp createdDate;
 }
