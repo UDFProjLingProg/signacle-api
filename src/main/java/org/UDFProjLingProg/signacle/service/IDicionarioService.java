@@ -1,4 +1,4 @@
-package org.UDFProjLingProg.signacle.use_cases.interfaces;
+package org.UDFProjLingProg.signacle.service;
 
 import org.UDFProjLingProg.signacle.DTO.LibraDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
