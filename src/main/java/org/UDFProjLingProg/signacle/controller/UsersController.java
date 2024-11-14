@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 @Tag(name = "Users", description = "Listagem de Usuarios")
 public class UsersController extends GenericResource<UserDto, UsersController> {
     public UsersController(final GenericService<UserDto> service){
-        super(service, "api/users");
+        super(service, "users");
     }
     
     @GetMapping
