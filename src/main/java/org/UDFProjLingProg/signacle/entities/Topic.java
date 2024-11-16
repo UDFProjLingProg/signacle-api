@@ -14,7 +14,7 @@ import java.util.UUID;
 import java.time.LocalDateTime;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -24,24 +24,49 @@ public class Topic extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_topico", columnDefinition = "UUID", nullable = false, updatable = false)
-    private UUID idTopico;
+    @Column(name = "id_topic", columnDefinition = "UUID", nullable = false, updatable = false)
+    private UUID idTopic;
 
-    @Column(name = "palavra", nullable = false)
-    private String palavra;
+    @Column(name = "word", nullable = false)
+    private String word;
 
-    @Column(name = "explicacao_palavra")
-    private String explicacaoPalavra;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "imagem", nullable = false)
-    private String imagem;
+    @Column(name = "image", nullable = false)
+    private String image;
 
     @Column(name = "video", nullable = false)
     private Integer video;
 
-    @Column(name = "comentario", nullable = false)
-    private String comentario;
+    @Column(name = "comment", nullable = false)
+    private String comment;
 
-    @Column(name = "created_date")
+    @Column(name = "created_date", nullable = false)
     private LocalDateTime createdDate;
+
+    // Método para retornar a palavra
+    public String getWord() {
+        return word;
+    }
+
+    // Método para retornar a descrição
+    public String getDescription() {
+        return description;
+    }
+
+    // Método para retornar a imagem
+    public String getImage() {
+        return image;
+    }
+
+    // Método para retornar o vídeo
+    public Integer getVideo() {
+        return video;
+    }
+
+    // Método para retornar o comentário
+    public String getComment() {
+        return comment;
+    }
 }
