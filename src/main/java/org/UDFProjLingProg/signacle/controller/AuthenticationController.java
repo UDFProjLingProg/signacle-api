@@ -38,7 +38,7 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<?> registerOtherUser(
         @RequestBody @Valid RegistrationEmailRequest request
-    ) {
+    ) throws Exception {
         service.registerOtherUser(request);
         return ResponseEntity.accepted().build();
     }

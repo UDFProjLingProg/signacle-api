@@ -33,7 +33,7 @@ public class EmailService {
     ) throws Exception {
         String templateName;
         if (emailTemplate == null) {
-            templateName = "confirm-email";
+            templateName = "create-account";
         } else {
             templateName = emailTemplate.name();
         }
@@ -50,7 +50,7 @@ public class EmailService {
         Context context = new Context();
         context.setVariables(properties);
 
-        helper.setFrom("signacle.udf@outlook.com");
+        helper.setFrom("signacleudf@gmail.com");
         helper.setTo(to);
         helper.setSubject(subject);
 
