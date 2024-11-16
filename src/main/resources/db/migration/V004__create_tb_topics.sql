@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS libras.tb_topics
-(
+( 
     id_topic UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     word VARCHAR NOT NULL,
     description VARCHAR,
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS libras.tb_topics
     video INT NOT NULL,
     comment VARCHAR NOT NULL,
     created_date    TIMESTAMP NOT NULL
-);
+); 
 
 COMMENT ON TABLE libras.tb_topics IS 'Tabela que armazena informações sobre os topicos.';
 

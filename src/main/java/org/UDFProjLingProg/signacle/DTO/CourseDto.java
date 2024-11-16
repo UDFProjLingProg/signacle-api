@@ -1,6 +1,5 @@
 package org.UDFProjLingProg.signacle.DTO;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;

@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS libras.tb_users
     id_user         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     first_name      VARCHAR,
     last_name       VARCHAR,
-    email           VARCHAR,
+    email           VARCHAR NOT NULL UNIQUE,
     password        VARCHAR,
     account_locked  BOOLEAN,
     enabled         BOOLEAN,
-    created_date    TIMESTAMP NOT NULL
+    created_date    TIMESTAMP NOT NULL DEFAULT now()
 );
 
 COMMENT ON TABLE libras.tb_users IS 'Tabela que armazena informações sobre os usuários.';

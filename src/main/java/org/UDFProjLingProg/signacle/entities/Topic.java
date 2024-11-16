@@ -22,24 +22,18 @@ import java.time.LocalDateTime;
 @Table(name = "tb_topics", schema = SchemaConstants.LIBRAS)
 public class Topic extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_topico", columnDefinition = "UUID", nullable = false, updatable = false)
-    private UUID idTopico;
-
-    @Column(name = "palavra", nullable = false)
+    @Column(name = "word", nullable = false)
     private String palavra;
 
-    @Column(name = "explicacao_palavra")
+    @Column(name = "description")
     private String explicacaoPalavra;
 
-    @Column(name = "imagem", nullable = false)
+    @Column(name = "image", nullable = false)
     private String imagem;
 
     @Column(name = "video", nullable = false)
     private Integer video;
 
-    @Column(name = "comentario", nullable = false)
+    @Column(name = "comment", nullable = false)
     private String comentario;
-
 }
