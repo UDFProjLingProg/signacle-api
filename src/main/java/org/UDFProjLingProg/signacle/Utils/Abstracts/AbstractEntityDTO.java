@@ -1,5 +1,7 @@
 package org.UDFProjLingProg.signacle.Utils.Abstracts;
 
+import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.constants.UtilsConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,6 +15,7 @@ import lombok.ToString;
 
 @Data
 @ToString
+@SuperBuilder
 @JsonIgnoreProperties({"createdBy", "updatedBy", "created", "updated", "excluded"})
 public abstract class AbstractEntityDTO implements Serializable {
 

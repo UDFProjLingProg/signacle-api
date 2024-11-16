@@ -14,7 +14,6 @@ import java.util.UUID;
 import java.time.LocalDateTime;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,26 +21,19 @@ import java.time.LocalDateTime;
 @Table(name = "tb_topics", schema = SchemaConstants.LIBRAS)
 public class Topic extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_topico", columnDefinition = "UUID", nullable = false, updatable = false)
-    private UUID idTopico;
+    @Column(name = "word", nullable = false)
+    private String word;
 
-    @Column(name = "palavra", nullable = false)
-    private String palavra;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "explicacao_palavra")
-    private String explicacaoPalavra;
-
-    @Column(name = "imagem", nullable = false)
-    private String imagem;
+    @Column(name = "image", nullable = false)
+    private String image;
 
     @Column(name = "video", nullable = false)
     private Integer video;
 
-    @Column(name = "comentario", nullable = false)
-    private String comentario;
+    @Column(name = "comment", nullable = false)
+    private String comment;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
 }

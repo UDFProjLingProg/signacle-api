@@ -24,6 +24,6 @@ public class AbstractEntity implements Serializable {
     @Column(name = "created_date", nullable = false)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern = UtilsConstants.DATE_TIME_PATTERN)
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
 
 }

@@ -1,10 +1,13 @@
 package org.UDFProjLingProg.signacle.entities;
 
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.security.Principal;
@@ -29,6 +32,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Builder
 @Entity
 @Table(name = "tb_users", schema = SchemaConstants.LIBRAS)
+@AttributeOverride(name = "id", column = @Column(name = "id_user"))
 public class User extends AbstractEntity implements UserDetails, Principal{
 
     private String firstName;
@@ -39,15 +43,22 @@ public class User extends AbstractEntity implements UserDetails, Principal{
     private boolean accountLocked;
     private boolean enabled;
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "rel_users_roles",
+        schema = "libras",
+        joinColumns = @JoinColumn(name = "id_users"),
+        inverseJoinColumns = @JoinColumn(name = "id_roles")
+    )
     List<Roles> roles;
 
 
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
     @Override
     public String getName() {
-        return email;
+        return firstName;
     }
 
     @Override

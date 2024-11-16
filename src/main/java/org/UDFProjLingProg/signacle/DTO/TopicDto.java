@@ -1,5 +1,9 @@
 package org.UDFProjLingProg.signacle.DTO;
 
+import java.sql.Timestamp;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
+
 import java.util.UUID;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import lombok.AllArgsConstructor;
@@ -15,10 +19,10 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 public class TopicDto extends AbstractEntityDTO {
 
-    private UUID idTopico;
-    private String palavra;
-    private String explicacaoPalavra;
-    private String imagem;
-    private Integer video;
-    private String comentario;
+    private String word;
+    private String description;
+    private String image;
+    private String video;
+    private String comment;
+
 }
