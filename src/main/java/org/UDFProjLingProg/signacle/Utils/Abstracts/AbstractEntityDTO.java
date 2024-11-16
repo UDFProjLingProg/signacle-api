@@ -1,5 +1,6 @@
 package org.UDFProjLingProg.signacle.Utils.Abstracts;
 
+import lombok.Builder;
 import org.UDFProjLingProg.signacle.constants.UtilsConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

@@ -1,20 +1,15 @@
 package org.UDFProjLingProg.signacle.DTO;
 
+import lombok.*;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class UserDto extends AbstractEntityDTO {
-    private String firstName;
-    private String lastName;
+    private String name;
     private String  email;
-    private String password;
 }
