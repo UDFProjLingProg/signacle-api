@@ -14,7 +14,6 @@ import java.util.UUID;
 import java.time.LocalDateTime;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,17 +22,21 @@ import java.time.LocalDateTime;
 public class Topic extends AbstractEntity {
 
     @Column(name = "word", nullable = false)
-    private String palavra;
+    private String word;
 
     @Column(name = "description")
-    private String explicacaoPalavra;
+    private String description;
 
     @Column(name = "image", nullable = false)
-    private String imagem;
+    private String image;
 
     @Column(name = "video", nullable = false)
     private Integer video;
 
     @Column(name = "comment", nullable = false)
-    private String comentario;
+    private String comment;
+
+    @Column(name = "created_date", nullable = false)
+    private LocalDateTime createdDate;
+
 }

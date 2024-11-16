@@ -22,4 +22,5 @@ public class CourseDto extends AbstractEntityDTO{
     private String urlImage;
     private String urlVideo;
     private LocalDateTime createdDate;
+  
 }
