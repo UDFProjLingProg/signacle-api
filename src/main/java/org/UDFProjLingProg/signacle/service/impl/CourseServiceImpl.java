@@ -9,6 +9,7 @@ import org.UDFProjLingProg.signacle.service.ICourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CourseServiceImpl extends GenericServiceImpl<Course, CourseDto> implements ICourseService {
@@ -26,4 +27,23 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, CourseDto> imp
     public List<CourseDto> findAll() {
         return this.mapper.toDto(this.repository.findAll());
     }
+    
+    
+    public CourseDto findById(UUID id)
+    {
+        return this.mapper.toDto
+            (this.repository.findById(id).orElseThrow(
+                    () -> new RuntimeException("Course not found")
+            ));
+    }
+
+    
+
+    public CourseDto findByName(String name) {
+        return this.mapper.toDto
+                (this.repository.findByName(name).orElseThrow(
+                        () -> new RuntimeException("Course not found")
+                ));
+    }
+    
 }
