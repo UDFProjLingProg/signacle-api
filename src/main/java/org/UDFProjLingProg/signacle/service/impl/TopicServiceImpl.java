@@ -12,26 +12,23 @@ import java.util.List;
 import java.util.UUID;
 
 public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implements ITopicService{
-	
-	private final TopicRepository repository;
-	private final TopicMapper mapper;
-	
-	public TopicServiceImpl(TopicRepository repository, TopicMapper mapper) {
-		
-		super(repository, mapper);
-		this.repository = repository;
-		this.mapper = mapper;
-	}
-	
-	@Override
-	public List<TopicDto> findAll() {
-        return this.mapper.toDto(this.repository.findAll());
-
+    
+    private final TopicRepository repository;
+    private final TopicMapper mapper;
+    
+    public TopicServiceImpl(TopicRepository repository, TopicMapper mapper) {
         
-	}
-	
-	
-	public TopicDto findById(UUID id)
+        super(repository, mapper);
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+    
+    @Override
+    public List<TopicDto> findAll() {
+        return this.mapper.toDto(this.repository.findAll());
+}
+
+    public TopicDto findById(UUID id)
     {
         return this.mapper.toDto
                 (this.repository.findById(id).orElseThrow(
