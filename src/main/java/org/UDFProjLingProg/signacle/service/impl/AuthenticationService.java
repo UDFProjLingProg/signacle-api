@@ -3,9 +3,10 @@ package org.UDFProjLingProg.signacle.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import lombok.RequiredArgsConstructor;
 import org.UDFProjLingProg.signacle.DTO.AuthenticationRequest;
 import org.UDFProjLingProg.signacle.DTO.AuthenticationResponse;
+import org.UDFProjLingProg.signacle.DTO.RegistrationEmailRequest;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.entities.User;
 import org.UDFProjLingProg.signacle.repository.RolesRepository;
@@ -16,8 +17,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -26,6 +25,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
+    private final JwtServiceImpl jwtService;
 //    private final EmailService emailService;
 
     public void register(RegistrationRequest request) {
@@ -37,6 +37,18 @@ public class AuthenticationService {
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .accountLocked(false)
+            .enabled(true)
+            .roles(List.of(userRole))
+            .build();
+        userRepository.save(user);
+    }
+
+    public void registerOtherUser(RegistrationEmailRequest request) {
+        var userRole = rolesRepository.findByName("USER")
+            .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
+        var user = User.builder()
+            .email(request.getEmail())
+            .accountLocked(false)
             .enabled(false)
             .roles(List.of(userRole))
             .build();
@@ -45,15 +57,15 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(final AuthenticationRequest request) {
         Authentication auth = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
+            new UsernamePasswordAuthenticationToken(
+                request.getEmail(),
+                request.getPassword()
+            )
         );
         Map<String, Object> claims = new HashMap<String, Object>();
         User user = (User) auth.getPrincipal();
         claims.put("fullName", user.getFullName());
-
-        return AuthenticationResponse.builder().build();
+        String jwt = jwtService.generateToken(claims, user);
+        return AuthenticationResponse.builder().token(jwt).build();
     }
 }

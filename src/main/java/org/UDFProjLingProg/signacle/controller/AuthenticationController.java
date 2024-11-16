@@ -2,6 +2,7 @@ package org.UDFProjLingProg.signacle.controller;
 
 import org.UDFProjLingProg.signacle.DTO.AuthenticationRequest;
 import org.UDFProjLingProg.signacle.DTO.AuthenticationResponse;
+import org.UDFProjLingProg.signacle.DTO.RegistrationEmailRequest;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.service.impl.AuthenticationService;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,15 @@ public class AuthenticationController {
         @RequestBody @Valid RegistrationRequest request
     ) {
         service.register(request);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/register-user")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<?> registerOtherUser(
+        @RequestBody @Valid RegistrationEmailRequest request
+    ) {
+        service.registerOtherUser(request);
         return ResponseEntity.accepted().build();
     }
 

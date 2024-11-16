@@ -1,5 +1,7 @@
 package org.UDFProjLingProg.signacle.entities;
 
+import jakarta.persistence.Table;
+import lombok.Builder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
