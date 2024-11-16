@@ -50,6 +50,7 @@ public class AuthenticationService {
               .build();
     }
     newUser.setId(oldUser.getId());
+    newUser.setEmail(request.getEmail());
     userRepository.save(newUser);
   }
 

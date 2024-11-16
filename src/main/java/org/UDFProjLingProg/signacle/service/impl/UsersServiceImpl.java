@@ -32,9 +32,7 @@ IUserService{
     @Override
     public UserDto findUserId(UUID id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado"));
-        UserDto userDto = UserDto.builder().email(user.getEmail()).name(user.getFullName()).build();
-        userDto.setId(user.getId());
-        return userDto;
+        return UserDto.builder().id(user.getId()).email(user.getEmail()).fullName(user.getFullName()).build();
     }
 
     @Override
