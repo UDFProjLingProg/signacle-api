@@ -1,4 +1,4 @@
-CREATE TABLE libras.tb_topicos
+CREATE TABLE libras.tb_topics
 ( 
  id_topico UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
  palavra VARCHAR NOT NULL,

@@ -8,6 +8,7 @@ import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,7 +24,5 @@ public class Course extends AbstractEntity {
     private String urlImage;
     @Column(name = "url_video")
     private String urlVideo;
-    @Column(name = "created_date")
-    private Timestamp createdDate;
 
 }
