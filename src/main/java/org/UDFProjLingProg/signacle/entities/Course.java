@@ -1,13 +1,14 @@
 package org.UDFProjLingProg.signacle.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.*;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
-import java.sql.Timestamp;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,7 +24,5 @@ public class Course extends AbstractEntity {
     private String urlImage;
     @Column(name = "url_video")
     private String urlVideo;
-    @Column(name = "created_date")
-    private Timestamp createdDate;
 
 }
