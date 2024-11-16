@@ -1,6 +1,7 @@
 package org.UDFProjLingProg.signacle.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.UDFProjLingProg.signacle.DTO.UserDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericServiceImpl;
@@ -9,6 +10,7 @@ import org.UDFProjLingProg.signacle.mapper.UserMapper;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
 import org.UDFProjLingProg.signacle.service.IUserService;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,12 +19,20 @@ IUserService{
     private final UserRepository repository;
 
     private final UserMapper mapper;
+    private final UserRepository userRepository;
 
     public UsersServiceImpl(final UserRepository repository,
-        final UserMapper mapper) {
+                            final UserMapper mapper, UserRepository userRepository) {
         super(repository, mapper);
         this.repository = repository;
         this.mapper = mapper;
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDto findUserId(UUID id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado"));
+        return UserDto.builder().id(user.getId()).email(user.getEmail()).fullName(user.getFullName()).build();
     }
 
     @Override

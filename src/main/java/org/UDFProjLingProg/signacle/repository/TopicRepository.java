@@ -8,6 +8,7 @@ import org.UDFProjLingProg.signacle.entities.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+@Repository
 public interface TopicRepository extends JpaRepository<Topic, UUID> {
     Optional<Topic> findByWord(String word);
 }

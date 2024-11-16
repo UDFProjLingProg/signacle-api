@@ -30,7 +30,7 @@ public class JwtServiceImpl {
         return generateToken(new HashMap<>(), userDetails);
     }
 
-    private String generateToken(final Map<String, Object> claims,
+    public String generateToken(final Map<String, Object> claims,
         final UserDetails userDetails) {
         return buildToken(claims, userDetails, jwtEpiration);
     }

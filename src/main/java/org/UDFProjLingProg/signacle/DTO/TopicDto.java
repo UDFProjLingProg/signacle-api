@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 
+import java.util.UUID;
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,8 +17,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+public class TopicDto extends AbstractEntityDTO {
 
-public class TopicDto {
     private String word;
     private String description;
     private String image;
