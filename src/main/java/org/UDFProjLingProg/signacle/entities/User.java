@@ -55,9 +55,10 @@ public class User extends AbstractEntity implements UserDetails, Principal{
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
     @Override
     public String getName() {
-        return email;
+        return firstName;
     }
 
     @Override
