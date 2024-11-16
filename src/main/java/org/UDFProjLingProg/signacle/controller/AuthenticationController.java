@@ -3,6 +3,8 @@ package org.UDFProjLingProg.signacle.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.UDFProjLingProg.signacle.DTO.AuthenticationRequest;
+import org.UDFProjLingProg.signacle.DTO.AuthenticationResponse;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.service.impl.AuthenticationService;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,11 @@ public class AuthenticationController {
     ) {
         service.register(request);
         return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/authenticate")
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Valid AuthenticationRequest request){
+        return ResponseEntity.ok(service.authenticate(request));
     }
 
 }
