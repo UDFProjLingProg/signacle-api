@@ -36,7 +36,4 @@ public class Topic extends AbstractEntity {
     @Column(name = "comment", nullable = false)
     private String comment;
 
-    @Column(name = "created_date", nullable = false)
-    private LocalDateTime createdDate;
-
 }
