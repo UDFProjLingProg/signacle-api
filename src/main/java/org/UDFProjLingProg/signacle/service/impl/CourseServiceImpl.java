@@ -44,4 +44,31 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, CourseDto> imp
                         () -> new RuntimeException("Course not found")
                 ));
     }
+
+    public CourseDto create(CourseDto dto) {
+        return  this.mapper.toDto(
+                this.repository.save(this.mapper.toEntity(dto))
+        );
+    }
+
+    public CourseDto update(UUID id, CourseDto dto) {
+        Optional<Course> course = this.repository.findById(id);
+        if(course.isPresent()) {
+            Course courseEntity = course.get();
+
+            courseEntity.setName(dto.getName());
+            courseEntity.setUrlImage(dto.getUrlImage());
+            courseEntity.setUrlVideo(dto.getUrlVideo());
+
+            return this.mapper.toDto(
+                    this.repository.save(courseEntity)
+            );
+
+        }
+        return null;
+    }
+
+    public void delete(UUID id) {
+        this.repository.deleteById(id);
+    }
 }

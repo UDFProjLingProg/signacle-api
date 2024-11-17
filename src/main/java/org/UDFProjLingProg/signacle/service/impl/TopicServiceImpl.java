@@ -9,6 +9,7 @@ import org.UDFProjLingProg.signacle.service.ITopicService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implements ITopicService{
@@ -43,4 +44,33 @@ public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implem
                         () -> new RuntimeException("Topic not found")
                 ));
     }
+
+	public TopicDto create(TopicDto dto) {
+		return  this.mapper.toDto(
+				this.repository.save(this.mapper.toEntity(dto))
+		);
+	}
+
+	public TopicDto update(UUID id, TopicDto dto) {
+		Optional<Topic> topic = this.repository.findById(id);
+		if(topic.isPresent()) {
+			Topic topicEntity = topic.get();
+
+			topicEntity.setWord(dto.getWord());
+			topicEntity.setDescription(dto.getDescription());
+			topicEntity.setImage(dto.getImage());
+			topicEntity.setVideo(dto.getVideo());
+			topicEntity.setComment(dto.getComment());
+
+			return this.mapper.toDto(
+					this.repository.save(topicEntity)
+			);
+
+		}
+		return null;
+	}
+
+	public void delete(UUID id) {
+		this.repository.deleteById(id);
+	}
 }
