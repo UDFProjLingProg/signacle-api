@@ -40,6 +40,11 @@ public class TopicController extends GenericController<TopicDto, TopicController
     }
   }
 
+  @GetMapping("/courseid/{idCourse}")
+  public ResponseEntity<List<TopicDto>> getCourseByID(@PathVariable final String idCourse) throws Exception {
+    return ResponseEntity.ok().body(this.service.findByCourseId(idCourse));
+  }
+
   @PostMapping
   public ResponseEntity<?> create(@RequestBody TopicDto dto) throws Exception {
     return super.createObject(dto);

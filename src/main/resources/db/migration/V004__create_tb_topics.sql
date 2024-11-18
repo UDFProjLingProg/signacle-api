@@ -17,3 +17,9 @@ COMMENT ON COLUMN libras.tb_topics.description IS 'Descrição da palavra.';
 COMMENT ON COLUMN libras.tb_topics.image IS 'Image do tópico.';
 COMMENT ON COLUMN libras.tb_topics.comment IS 'Comentário do Tópico';
 COMMENT ON COLUMN libras.tb_topics.created_date IS 'Data de criação do registro do usuário.';
+
+alter table libras.tb_topics
+    add id_course UUID
+        constraint tb_topics_tb_course_id_course_fk
+            references libras.tb_course;
+

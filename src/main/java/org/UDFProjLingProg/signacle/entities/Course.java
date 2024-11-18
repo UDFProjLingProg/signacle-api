@@ -1,8 +1,6 @@
 package org.UDFProjLingProg.signacle.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
@@ -21,6 +19,7 @@ import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 @SuperBuilder
 @Entity
 @Table(name = "tb_course", schema = SchemaConstants.LIBRAS)
+@AttributeOverride(name = "id", column = @Column(name = "id_course"))
 public class Course extends AbstractEntity {
 
     private String name;

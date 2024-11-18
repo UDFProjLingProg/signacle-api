@@ -24,5 +24,6 @@ public class TopicDto extends AbstractEntityDTO {
     private String image;
     private String video;
     private String comment;
+    private String idCourse;
 
 }

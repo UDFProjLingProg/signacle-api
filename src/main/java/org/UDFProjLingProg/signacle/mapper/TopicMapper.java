@@ -17,6 +17,7 @@ public interface TopicMapper extends GenericEntityMapper<TopicDto, Topic> {
   Topic toEntity(TopicDto dto);
 
   @Mapping(target = "id", source = "id")
+  @Mapping(target = "idCourse", source = "course.id")
   @Override
   TopicDto toDto(Topic entity);
 
