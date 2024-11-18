@@ -1,6 +1,5 @@
 package org.UDFProjLingProg.signacle.DTO;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
@@ -23,4 +22,5 @@ public class CourseDto extends AbstractEntityDTO{
     private String urlImage;
     private String urlVideo;
     private LocalDateTime createdDate;
+  
 }

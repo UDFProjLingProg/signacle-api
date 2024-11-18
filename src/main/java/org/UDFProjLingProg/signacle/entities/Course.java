@@ -8,7 +8,10 @@ import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import jakarta.persistence.Table;
+import lombok.Builder;
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
+import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
