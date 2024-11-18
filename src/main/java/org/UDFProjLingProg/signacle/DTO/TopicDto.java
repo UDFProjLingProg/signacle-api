@@ -16,8 +16,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-
+@EqualsAndHashCode(callSuper = true)
 public class TopicDto extends AbstractEntityDTO {
 
     private String word;
@@ -25,5 +24,6 @@ public class TopicDto extends AbstractEntityDTO {
     private String image;
     private String video;
     private String comment;
+    private String idCourse;
 
 }

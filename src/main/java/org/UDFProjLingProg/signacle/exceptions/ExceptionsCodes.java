@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 
 import static org.springframework.http.HttpStatus.*;
 
+@Getter
 public enum ExceptionsCodes {
   NO_CODE(0, NOT_IMPLEMENTED, "No code"),
   INCORRECT_CURRENT_PASSWORD(300, BAD_REQUEST, "Current password is incorrect"),
@@ -19,6 +20,8 @@ public enum ExceptionsCodes {
   @Getter
   private final String description;
   @Getter
+  private final int code;
+  private final String description;
   private final HttpStatus httpStatus;
 
   ExceptionsCodes(int code, HttpStatus status, String description) {

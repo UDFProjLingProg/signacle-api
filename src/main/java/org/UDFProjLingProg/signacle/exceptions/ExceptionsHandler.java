@@ -73,7 +73,6 @@ public class ExceptionsHandler {
     Set<String> errors = new HashSet<>();
     exp.getBindingResult().getAllErrors()
             .forEach(error -> {
-              //var fieldName = ((FieldError) error).getField();
               var errorMessage = error.getDefaultMessage();
               errors.add(errorMessage);
             });

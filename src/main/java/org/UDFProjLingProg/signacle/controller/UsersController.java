@@ -3,11 +3,12 @@ package org.UDFProjLingProg.signacle.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.UDFProjLingProg.signacle.DTO.UserDto;
-import org.UDFProjLingProg.signacle.Utils.Generics.GenericResource;
+import org.UDFProjLingProg.signacle.Utils.Generics.GenericController;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
 import org.UDFProjLingProg.signacle.entities.User;
 import org.UDFProjLingProg.signacle.service.IUserService;
 import org.UDFProjLingProg.signacle.service.impl.UsersServiceImpl;
+import org.UDFProjLingProg.signacle.service.IUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
