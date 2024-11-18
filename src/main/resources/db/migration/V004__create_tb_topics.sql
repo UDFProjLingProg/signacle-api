@@ -22,4 +22,3 @@ alter table libras.tb_topics
     add id_course UUID
         constraint tb_topics_tb_course_id_course_fk
             references libras.tb_course;
-
