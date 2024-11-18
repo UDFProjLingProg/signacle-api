@@ -2,6 +2,7 @@ package org.UDFProjLingProg.signacle.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "tb_libra", schema = SchemaConstants.LIBRAS)
 public class Libras extends AbstractEntity {
@@ -27,9 +28,6 @@ public class Libras extends AbstractEntity {
 
     @Column(name = "url_video")
     private String urlVideo;
-
-    @Column(name = "created_date", nullable = false)
-    private Timestamp createdDate;
 
     @ManyToOne
     @JoinColumn(name = "fk_topic", nullable = false)

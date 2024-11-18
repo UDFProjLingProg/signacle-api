@@ -20,7 +20,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/users")
 @Tag(name = "Users", description = "Listagem de Usuarios")
-public class UsersController extends GenericResource<UserDto, UsersController> {
+public class UsersController extends GenericController<UserDto, UsersController> {
     private final IUserService userService;
 
     public UsersController(final GenericService<UserDto> service, IUserService userService){

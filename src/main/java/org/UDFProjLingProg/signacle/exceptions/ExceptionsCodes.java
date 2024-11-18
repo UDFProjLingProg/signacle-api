@@ -15,11 +15,6 @@ public enum ExceptionsCodes {
   BAD_CREDENTIALS(304, FORBIDDEN, "Login and / or Password is incorrect"),
   ;
 
-  @Getter
-  private final int code;
-  @Getter
-  private final String description;
-  @Getter
   private final int code;
   private final String description;
   private final HttpStatus httpStatus;
