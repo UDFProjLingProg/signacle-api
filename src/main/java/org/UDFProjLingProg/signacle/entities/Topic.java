@@ -31,7 +31,7 @@ public class Topic extends AbstractEntity {
     private String image;
 
     @Column(name = "video", nullable = false)
-    private Integer video;
+    private String video;
 
     @Column(name = "comment", nullable = false)
     private String comment;
