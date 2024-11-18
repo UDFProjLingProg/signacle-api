@@ -12,10 +12,10 @@ public class AuthenticationRequest {
 
   @Email(message = "Forneça um email válido")
   @NotEmpty(message = "Email é obrigatório")
-  @NotBlank(message = "Email nome é obrigatório")
+  @NotBlank(message = "Email é obrigatório")
   private String email;
-  @NotEmpty(message = "Senha nome é obrigatório")
-  @NotBlank(message = "Senha nome é obrigatório")
+  @NotEmpty(message = "Senha é obrigatório")
+  @NotBlank(message = "Senha é obrigatório")
   private String password;
 
 }

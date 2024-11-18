@@ -3,11 +3,9 @@ package org.UDFProjLingProg.signacle.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.UDFProjLingProg.signacle.DTO.UserDto;
-import org.UDFProjLingProg.signacle.Utils.Generics.GenericResource;
+import org.UDFProjLingProg.signacle.Utils.Generics.GenericController;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
-import org.UDFProjLingProg.signacle.entities.User;
 import org.UDFProjLingProg.signacle.service.IUserService;
-import org.UDFProjLingProg.signacle.service.impl.UsersServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +17,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/users")
 @Tag(name = "Users", description = "Listagem de Usuarios")
-public class UsersController extends GenericResource<UserDto, UsersController> {
+public class UsersController extends GenericController<UserDto, UsersController> {
     private final IUserService userService;
 
     public UsersController(final GenericService<UserDto> service, IUserService userService){

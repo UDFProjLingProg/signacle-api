@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS libras.tb_topics
     word VARCHAR NOT NULL,
     description VARCHAR,
     image VARCHAR NOT NULL,
-    video INT NOT NULL,
+    video VARCHAR NOT NULL,
     comment VARCHAR NOT NULL,
-    created_date    TIMESTAMP NOT NULL
+    created_date    TIMESTAMP NOT NULL DEFAULT now()
 ); 
 
 COMMENT ON TABLE libras.tb_topics IS 'Tabela que armazena informações sobre os topicos.';

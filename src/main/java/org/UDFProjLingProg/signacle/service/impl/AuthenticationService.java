@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +64,9 @@ public class AuthenticationService {
             .enabled(false)
             .roles(List.of(userRole))
             .build();
-
+    if (user.getCreated() == null) {
+      user.setCreated(LocalDateTime.now());
+    }
     userRepository.save(user);
 
     emailService.sendEmail(user.getEmail(),

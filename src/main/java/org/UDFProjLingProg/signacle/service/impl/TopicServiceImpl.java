@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implements ITopicService{
     
     private final TopicRepository repository;

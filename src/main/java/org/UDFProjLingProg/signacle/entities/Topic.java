@@ -1,12 +1,8 @@
 package org.UDFProjLingProg.signacle.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
@@ -16,9 +12,11 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@SuperBuilder
+@EqualsAndHashCode(callSuper=true)
 @Table(name = "tb_topics", schema = SchemaConstants.LIBRAS)
+@AttributeOverride(name = "id", column = @Column(name = "id_topic"))
 public class Topic extends AbstractEntity {
 
     @Column(name = "word", nullable = false)

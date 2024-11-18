@@ -19,6 +19,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,7 +30,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "tb_users", schema = SchemaConstants.LIBRAS)
 @AttributeOverride(name = "id", column = @Column(name = "id_user"))

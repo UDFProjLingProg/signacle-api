@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
@@ -17,7 +18,7 @@ import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "tb_course", schema = SchemaConstants.LIBRAS)
 public class Course extends AbstractEntity {
