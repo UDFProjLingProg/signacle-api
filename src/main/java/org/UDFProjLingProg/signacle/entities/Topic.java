@@ -14,7 +14,14 @@ import java.util.UUID;
 import java.time.LocalDateTime;
 
 @Data
+<<<<<<< HEAD
 @EqualsAndHashCode(callSuper = true)
+=======
+<<<<<<< HEAD
+@EqualsAndHashCode(callSuper = true)
+=======
+>>>>>>> f23ce4807cebd91e8db4317d2da66ef8420da779
+>>>>>>> main
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,11 +29,20 @@ import java.time.LocalDateTime;
 @Table(name = "tb_topics", schema = SchemaConstants.LIBRAS)
 public class Topic extends AbstractEntity {
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_topic", columnDefinition = "UUID", nullable = false, updatable = false)
     private UUID idTopic;
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f23ce4807cebd91e8db4317d2da66ef8420da779
+>>>>>>> main
     @Column(name = "word", nullable = false)
     private String word;
 
@@ -42,6 +58,10 @@ public class Topic extends AbstractEntity {
     @Column(name = "comment", nullable = false)
     private String comment;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
     @Column(name = "created_date", nullable = false)
     private LocalDateTime createdDate;
 
@@ -69,4 +89,9 @@ public class Topic extends AbstractEntity {
     public String getComment() {
         return comment;
     }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f23ce4807cebd91e8db4317d2da66ef8420da779
+>>>>>>> main
 }
