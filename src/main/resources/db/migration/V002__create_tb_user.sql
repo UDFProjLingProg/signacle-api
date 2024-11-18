@@ -9,7 +9,11 @@ CREATE TABLE IF NOT EXISTS libras.tb_users
     password        VARCHAR,
     account_locked  BOOLEAN,
     enabled         BOOLEAN,
+<<<<<<< HEAD
+    created_date    TIMESTAMP NOT NULL
+=======
     created_date    TIMESTAMP NOT NULL DEFAULT now()
+>>>>>>> main
 );
 
 COMMENT ON TABLE libras.tb_users IS 'Tabela que armazena informações sobre os usuários.';

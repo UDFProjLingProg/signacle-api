@@ -17,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+
 public class TopicDto extends AbstractEntityDTO {
 
     private String word;
