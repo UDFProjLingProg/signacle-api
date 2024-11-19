@@ -15,7 +15,8 @@ import java.sql.Timestamp;
 @SuperBuilder
 @Entity
 @Table(name = "tb_libra", schema = SchemaConstants.LIBRAS)
-public class Libras extends AbstractEntity {
+@AttributeOverride(name = "id", column = @Column(name = "id_libra"))
+public class Libra extends AbstractEntity {
 
     @Column(nullable = false)
     private String name;
@@ -30,7 +31,7 @@ public class Libras extends AbstractEntity {
     private String urlVideo;
 
     @ManyToOne
-    @JoinColumn(name = "fk_topic", nullable = false)
+    @JoinColumn(name = "id_topic", nullable = false)
     private Topic topic;
 
 }

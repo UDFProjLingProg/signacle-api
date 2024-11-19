@@ -30,7 +30,7 @@ public class TopicController extends GenericController<TopicDto, TopicController
   }
 
   @GetMapping("/id")
-  public ResponseEntity<TopicDto> getUserByID(@RequestParam String id) {
+  public ResponseEntity<TopicDto> getTopicById(@RequestParam String id) {
     try {
       UUID uuid = UUID.fromString(id);
       TopicDto topic = service.findOneById(uuid).orElseThrow(() -> new BusinessException("Tópico não encontrado"));
@@ -40,7 +40,7 @@ public class TopicController extends GenericController<TopicDto, TopicController
     }
   }
 
-  @GetMapping("/courseid/{idCourse}")
+  @GetMapping("/course-id/{idCourse}")
   public ResponseEntity<List<TopicDto>> getCourseByID(@PathVariable final String idCourse) throws Exception {
     return ResponseEntity.ok().body(this.service.findByCourseId(idCourse));
   }

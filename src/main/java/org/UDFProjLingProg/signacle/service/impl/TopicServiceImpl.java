@@ -57,6 +57,7 @@ public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implem
     Course course = courseRepository.findById(idCourse).orElseThrow(() -> new BusinessException("O Curso não foi encontrado"));
     Topic topic = this.mapper.toEntity(dto);
     topic.setCourse(course);
+
     if (topic.getCreated() == null) {
       topic.setCreated(LocalDateTime.now());
     }

@@ -5,4 +5,7 @@ import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
 import org.UDFProjLingProg.signacle.entities.Course;
 
 public interface ICourseService extends GenericService<CourseDto> {
+
+  public CourseDto findByName(String name);
+
 }
