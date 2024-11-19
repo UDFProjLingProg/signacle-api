@@ -1,5 +1,6 @@
 package org.UDFProjLingProg.signacle.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.UDFProjLingProg.signacle.DTO.CourseDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericController;
 import org.UDFProjLingProg.signacle.service.ICourseService;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/course")
+@Tag(name = "Courses")
 public class CourseController extends GenericController<CourseDto, CourseController> {
 
   private final ICourseService service;

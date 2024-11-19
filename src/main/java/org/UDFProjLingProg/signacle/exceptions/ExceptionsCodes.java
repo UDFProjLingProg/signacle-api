@@ -13,6 +13,7 @@ public enum ExceptionsCodes {
   ACCOUNT_LOCKED(302, FORBIDDEN, "User account is locked"),
   ACCOUNT_DISABLED(303, FORBIDDEN, "User account is disabled"),
   BAD_CREDENTIALS(304, FORBIDDEN, "Login and / or Password is incorrect"),
+  ENTITY_NOT_FOUND(404, NOT_FOUND, "Not found"),
   ;
 
   private final int code;

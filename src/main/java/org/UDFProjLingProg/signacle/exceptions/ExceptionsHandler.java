@@ -1,6 +1,7 @@
 package org.UDFProjLingProg.signacle.exceptions;
 
 import jakarta.mail.MessagingException;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -83,6 +84,14 @@ public class ExceptionsHandler {
                     ExceptionsResponses.builder()
                             .validationErrors(errors)
                             .build()
+            );
+  }
+
+  @ExceptionHandler(UserNotFoundException.class)
+  public ResponseEntity<ExceptionsResponses> handleException(UserNotFoundException exp) {
+    return ResponseEntity.status(NOT_FOUND)
+            .body(
+                    ExceptionsResponses.builder().error(exp.getMessage()).build()
             );
   }
 

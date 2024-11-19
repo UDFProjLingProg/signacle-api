@@ -7,6 +7,8 @@ import org.UDFProjLingProg.signacle.DTO.RegistrationEmailRequest;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.constants.enums.EmailTemplateName;
 import org.UDFProjLingProg.signacle.entities.User;
+import org.UDFProjLingProg.signacle.exceptions.BusinessException;
+import org.UDFProjLingProg.signacle.exceptions.UserNotFoundException;
 import org.UDFProjLingProg.signacle.repository.RolesRepository;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,10 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -78,6 +77,11 @@ public class AuthenticationService {
   }
 
   public AuthenticationResponse authenticate(final AuthenticationRequest request) {
+    Optional<User> verifyUser = userRepository.findByEmail(request.getEmail());
+    if (verifyUser.isEmpty() || !verifyUser.get().isEnabled()) {
+      throw new UserNotFoundException("User was not found");
+    }
+
     Authentication auth = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                     request.getEmail(),
