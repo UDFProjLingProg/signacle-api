@@ -50,7 +50,8 @@ public class LibraController extends GenericController<LibraDto, LibraController
   }
 
   @DeleteMapping
-  public ResponseEntity<?> delete(@RequestBody LibraDto dto) throws Exception {
-    return super.delete(dto.getId());
+  public ResponseEntity<?> delete(@RequestBody String id) throws Exception {
+    UUID uuid = UUID.fromString(id);
+    return super.delete(uuid);
   }
 }
