@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class LibraDto extends AbstractEntityDTO {
-  private String palavra;
+  private String name;
 
   private String description;
 
