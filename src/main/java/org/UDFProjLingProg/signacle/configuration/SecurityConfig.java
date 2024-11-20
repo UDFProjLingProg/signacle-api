@@ -44,6 +44,7 @@ public class SecurityConfig {
                     .requestMatchers("/users/**").authenticated()
                     .requestMatchers(HttpMethod.PUT, "/**").authenticated()
                     .requestMatchers(HttpMethod.POST, "/**").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/**").authenticated()
                     .requestMatchers(HttpMethod.GET, "/**").permitAll()
             )
             .authenticationProvider(authenticationProvider)

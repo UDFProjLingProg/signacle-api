@@ -57,7 +57,7 @@ public class TopicController extends GenericController<TopicDto, TopicController
 
   @DeleteMapping
   public ResponseEntity<?> delete(@RequestBody TopicDto dto) throws Exception {
-    super.delete(dto.getId());
+    return super.delete(dto.getId());
   }
 
 }
