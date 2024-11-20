@@ -41,6 +41,7 @@ public class SecurityConfig {
                             "/webjars/**",
                             "/swagger-ui.html"
                     ).permitAll()
+                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     .requestMatchers("/users/**").authenticated()
                     .requestMatchers(HttpMethod.PUT, "/**").authenticated()
                     .requestMatchers(HttpMethod.POST, "/**").authenticated()
@@ -58,7 +59,6 @@ public class SecurityConfig {
       @Override
       public void addCorsMappings(@NonNull final CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")
                 .allowedMethods(HttpMethod.GET.name(),
                         HttpMethod.POST.name(),
                         HttpMethod.DELETE.name(),
