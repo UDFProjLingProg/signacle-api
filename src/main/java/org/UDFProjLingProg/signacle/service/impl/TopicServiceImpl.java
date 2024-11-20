@@ -1,5 +1,6 @@
 package org.UDFProjLingProg.signacle.service.impl;
 
+import org.UDFProjLingProg.signacle.DTO.LibraDto;
 import org.UDFProjLingProg.signacle.DTO.TopicDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericServiceImpl;
 import org.UDFProjLingProg.signacle.entities.Course;
@@ -8,6 +9,7 @@ import org.UDFProjLingProg.signacle.exceptions.BusinessException;
 import org.UDFProjLingProg.signacle.mapper.TopicMapper;
 import org.UDFProjLingProg.signacle.repository.CourseRepository;
 import org.UDFProjLingProg.signacle.repository.TopicRepository;
+import org.UDFProjLingProg.signacle.service.ILibraService;
 import org.UDFProjLingProg.signacle.service.ITopicService;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +24,15 @@ public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implem
   private final TopicRepository repository;
   private final TopicMapper mapper;
   private final CourseRepository courseRepository;
+  private final ILibraService libraService;
 
-  public TopicServiceImpl(final TopicRepository repository, final TopicMapper mapper, final CourseRepository courseRepository) {
+  public TopicServiceImpl(final TopicRepository repository, final TopicMapper mapper, final CourseRepository courseRepository, final ILibraService libraService) {
 
     super(repository, mapper);
     this.repository = repository;
     this.mapper = mapper;
     this.courseRepository = courseRepository;
+    this.libraService = libraService;
   }
 
   @Override
@@ -89,5 +93,16 @@ public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implem
 
     }
     return null;
+  }
+
+  @Override
+  public void delete(UUID id) throws Exception {
+    Topic topic = this.repository.findById(id).orElseThrow(() -> new RuntimeException("Topic not found"));
+
+    List<LibraDto> listLibra = this.libraService.findByTopicId(topic.getId().toString());
+    for (final LibraDto libraDto : listLibra) {
+      libraService.delete(libraDto.getId());
+    }
+    this.repository.deleteById(topic.getId());
   }
 }
