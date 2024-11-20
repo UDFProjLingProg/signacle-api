@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 
+import java.util.List;
 import java.util.UUID;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,6 @@ public class TopicDto extends AbstractEntityDTO {
     private String video;
     private String comment;
     private String idCourse;
+    private List<LibraDto> libra;
 
 }

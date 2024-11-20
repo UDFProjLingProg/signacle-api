@@ -5,6 +5,7 @@ import lombok.*;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @ToString
@@ -17,5 +18,6 @@ public class CourseDto extends AbstractEntityDTO {
   private String urlImage;
   private String urlVideo;
   private LocalDateTime createdDate;
+  private List<TopicDto> topic;
 
 }

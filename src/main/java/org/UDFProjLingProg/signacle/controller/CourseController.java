@@ -29,6 +29,11 @@ public class CourseController extends GenericController<CourseDto, CourseControl
     return super.findAll();
   }
 
+  @GetMapping("/all")
+  public ResponseEntity<List<CourseDto>> getAllCourses() throws Exception {
+    return ResponseEntity.ok().body(this.service.findAllComplete());
+  }
+
   @GetMapping("/name")
   public ResponseEntity<CourseDto> getCourseByName(@RequestParam String name) {
     try {
