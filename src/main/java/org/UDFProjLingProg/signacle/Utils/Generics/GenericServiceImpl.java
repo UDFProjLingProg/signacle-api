@@ -65,8 +65,8 @@ public abstract class GenericServiceImpl<E extends AbstractEntity, D extends Abs
 
   void executeDelete(Optional<D> optional) throws Exception {
     if (optional.isPresent()) {
-      D d = optional.get();
-      this.executeSave(d);
+      Optional<E> e = this.repository.findById(optional.get().getId());
+      e.ifPresent(this.repository::delete);
     }
   }
 

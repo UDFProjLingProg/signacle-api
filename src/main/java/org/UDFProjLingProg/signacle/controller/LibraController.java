@@ -48,4 +48,9 @@ public class LibraController extends GenericController<LibraDto, LibraController
   public ResponseEntity<?> update(@RequestBody LibraDto dto) throws Exception {
     return super.updateObject(dto);
   }
+
+  @DeleteMapping
+  public ResponseEntity<?> delete(@RequestBody LibraDto dto) throws Exception {
+    return super.delete(dto.getId());
+  }
 }

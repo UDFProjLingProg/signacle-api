@@ -90,8 +90,4 @@ public class TopicServiceImpl extends GenericServiceImpl<Topic, TopicDto> implem
     }
     return null;
   }
-
-  public void delete(UUID id) {
-    this.repository.deleteById(id);
-  }
 }
