@@ -44,4 +44,14 @@ public class UsersController extends GenericController<UserDto, UsersController>
         }
     }
 
+    @GetMapping("/email")
+    public ResponseEntity<UserDto> getUserByEmail(@RequestParam String email) {
+        try {
+            UserDto user = userService.findUserByEmail(email);
+            return ResponseEntity.ok(user);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
 }

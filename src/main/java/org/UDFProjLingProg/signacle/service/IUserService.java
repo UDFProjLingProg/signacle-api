@@ -7,4 +7,6 @@ import java.util.UUID;
 
 public interface IUserService extends GenericService<UserDto> {
     UserDto findUserId(UUID id);
+
+    UserDto findUserByEmail(String email);
 }

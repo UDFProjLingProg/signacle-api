@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 public class RegistrationRequest {
 
+    private String id;
     @NotEmpty(message = "Primeiro nome é obrigatório")
     @NotBlank(message = "Primeiro nome é obrigatório")
     private String firstName;

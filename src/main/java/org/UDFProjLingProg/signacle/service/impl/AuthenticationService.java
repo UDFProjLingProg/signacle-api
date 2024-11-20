@@ -7,7 +7,6 @@ import org.UDFProjLingProg.signacle.DTO.RegistrationEmailRequest;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.constants.enums.EmailTemplateName;
 import org.UDFProjLingProg.signacle.entities.User;
-import org.UDFProjLingProg.signacle.exceptions.BusinessException;
 import org.UDFProjLingProg.signacle.exceptions.UserNotFoundException;
 import org.UDFProjLingProg.signacle.repository.RolesRepository;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
@@ -37,7 +36,7 @@ public class AuthenticationService {
   public void register(RegistrationRequest request) {
     var userRole = rolesRepository.findByName("USER")
             .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
-    User oldUser = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
+    User oldUser = userRepository.findByEmailAndId(request.getEmail(), request.getId()).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
     User newUser = new User();
     if (Objects.nonNull(oldUser)) {
       newUser = User.builder()
@@ -67,17 +66,17 @@ public class AuthenticationService {
       user.setCreated(LocalDateTime.now());
     }
     userRepository.save(user);
-
+    String url = confirmationUrl + "?email=" + request.getEmail();
     emailService.sendEmail(user.getEmail(),
             user.getUsername(),
             EmailTemplateName.CREATE_ACCOUNT,
-            confirmationUrl,
+            url,
             "Criação de conta Signacle"
     );
   }
 
   public AuthenticationResponse authenticate(final AuthenticationRequest request) {
-    Optional<User> verifyUser = userRepository.findByEmail(request.getEmail());
+    Optional<User> verifyUser = this.userRepository.findByEmail(request.getEmail());
     if (verifyUser.isEmpty() || !verifyUser.get().isEnabled()) {
       throw new UserNotFoundException("User was not found");
     }
