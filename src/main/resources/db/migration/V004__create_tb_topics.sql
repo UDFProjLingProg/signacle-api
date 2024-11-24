@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS libras.tb_topics
     word VARCHAR NOT NULL,
     description VARCHAR,
     image VARCHAR NOT NULL,
-    video VARCHAR NOT NULL,
-    comment VARCHAR NOT NULL,
+    video VARCHAR,
+    comment VARCHAR,
     created_date    TIMESTAMP NOT NULL DEFAULT now()
 ); 
 
