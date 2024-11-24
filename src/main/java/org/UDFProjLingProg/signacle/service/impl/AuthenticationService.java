@@ -36,7 +36,8 @@ public class AuthenticationService {
   public void register(RegistrationRequest request) {
     var userRole = rolesRepository.findByName("USER")
             .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
-    User oldUser = userRepository.findByEmailAndId(request.getEmail(), request.getId()).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
+    UUID uuid = UUID.fromString(request.getId());
+    User oldUser = userRepository.findByEmailAndId(request.getEmail(), uuid).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
     User newUser = new User();
     if (Objects.nonNull(oldUser)) {
       newUser = User.builder()

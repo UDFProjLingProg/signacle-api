@@ -46,7 +46,7 @@ public class UsersController extends GenericController<UserDto, UsersController>
         }
     }
 
-    @GetMapping("/email")
+    @GetMapping("/public/email")
     public ResponseEntity<UserDto> getUserByEmail(@RequestParam String email) {
         try {
             UserDto user = userService.findUserByEmail(email);
