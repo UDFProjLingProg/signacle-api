@@ -57,8 +57,8 @@ jobs:
         # Criar script de deploy
         cat << 'EOF' > deploy.sh
         #!/bin/bash
-        docker-compose pull
-        docker-compose up -d
+        docker compose pull
+        docker compose up -d
         EOF
         
         chmod +x deploy.sh
