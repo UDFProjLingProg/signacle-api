@@ -1,18 +1,23 @@
 package org.UDFProjLingProg.signacle.DTO;
 
+import lombok.*;
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.util.UUID;
 
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class LibraDto extends AbstractEntityDTO{
-    private String palavra;
+@EqualsAndHashCode(callSuper = true)
+public class LibraDto extends AbstractEntityDTO {
+  private String name;
+
+  private String description;
+
+  private String urlImage;
+
+  private String urlVideo;
+
+  private String idTopic;
 }

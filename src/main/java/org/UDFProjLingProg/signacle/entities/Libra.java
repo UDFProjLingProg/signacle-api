@@ -7,25 +7,31 @@ import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
 import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 import java.sql.Timestamp;
-import jakarta.persistence.Table;
-import lombok.Builder;
-import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
-import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "tb_course", schema = SchemaConstants.LIBRAS)
-@AttributeOverride(name = "id", column = @Column(name = "id_course"))
-public class Course extends AbstractEntity {
+@Table(name = "tb_libra", schema = SchemaConstants.LIBRAS)
+@AttributeOverride(name = "id", column = @Column(name = "id_libra"))
+public class Libra extends AbstractEntity {
 
+    @Column(nullable = false)
     private String name;
+
+    @Column
+    private String description;
+
     @Column(name = "url_image")
     private String urlImage;
+
     @Column(name = "url_video")
     private String urlVideo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_topic", nullable = false)
+    private Topic topic;
 
 }

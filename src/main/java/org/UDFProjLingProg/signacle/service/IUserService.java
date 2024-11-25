@@ -1,10 +1,12 @@
 package org.UDFProjLingProg.signacle.service;
 
+import java.util.UUID;
+
 import org.UDFProjLingProg.signacle.DTO.UserDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
 
-import java.util.UUID;
-
 public interface IUserService extends GenericService<UserDto> {
-    public UserDto findUserId(UUID id);
+    UserDto findUserId(UUID id);
+
+    UserDto findUserByEmail(String email);
 }

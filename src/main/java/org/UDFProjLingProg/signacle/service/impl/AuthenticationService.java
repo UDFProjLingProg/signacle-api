@@ -1,12 +1,20 @@
 package org.UDFProjLingProg.signacle.service.impl;
 
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.UDFProjLingProg.signacle.DTO.AuthenticationRequest;
 import org.UDFProjLingProg.signacle.DTO.AuthenticationResponse;
 import org.UDFProjLingProg.signacle.DTO.RegistrationEmailRequest;
 import org.UDFProjLingProg.signacle.DTO.RegistrationRequest;
 import org.UDFProjLingProg.signacle.constants.enums.EmailTemplateName;
 import org.UDFProjLingProg.signacle.entities.User;
+import org.UDFProjLingProg.signacle.exceptions.UserNotFoundException;
 import org.UDFProjLingProg.signacle.repository.RolesRepository;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +24,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +42,8 @@ public class AuthenticationService {
   public void register(RegistrationRequest request) {
     var userRole = rolesRepository.findByName("USER")
             .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
-    User oldUser = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
+    UUID uuid = UUID.fromString(request.getId());
+    User oldUser = userRepository.findByEmailAndId(request.getEmail(), uuid).orElseThrow(() -> new IllegalStateException("Não foi possível encontrar um usuário com esse email"));
     User newUser = new User();
     if (Objects.nonNull(oldUser)) {
       newUser = User.builder()
@@ -63,18 +69,25 @@ public class AuthenticationService {
             .enabled(false)
             .roles(List.of(userRole))
             .build();
-
+    if (user.getCreated() == null) {
+      user.setCreated(LocalDateTime.now());
+    }
     userRepository.save(user);
-
+    String url = confirmationUrl + "?email=" + request.getEmail();
     emailService.sendEmail(user.getEmail(),
             user.getUsername(),
             EmailTemplateName.CREATE_ACCOUNT,
-            confirmationUrl,
+            url,
             "Criação de conta Signacle"
     );
   }
 
   public AuthenticationResponse authenticate(final AuthenticationRequest request) {
+    Optional<User> verifyUser = this.userRepository.findByEmail(request.getEmail());
+    if (verifyUser.isEmpty() || !verifyUser.get().isEnabled()) {
+      throw new UserNotFoundException("User was not found");
+    }
+
     Authentication auth = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                     request.getEmail(),

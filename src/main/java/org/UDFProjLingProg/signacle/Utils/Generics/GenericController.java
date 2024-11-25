@@ -9,14 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.UUID;
 
-public class GenericResource<D extends AbstractEntityDTO, R> {
+public class GenericController<D extends AbstractEntityDTO, R> {
 
 
     private final GenericService<D> service;
 
     private final String url;
 
-    public GenericResource(GenericService<D> service, String url) {
+    public GenericController(GenericService<D> service, String url) {
         this.service = service;
         this.url = url;
     }
@@ -27,10 +27,10 @@ public class GenericResource<D extends AbstractEntityDTO, R> {
             .body(result);
     }
 
-    public ResponseEntity<String> updateObject(D dto) throws Exception {
+    public ResponseEntity<?> updateObject(D dto) throws Exception {
         D result = this.service.save(dto);
         return ResponseEntity.ok()
-            .body(result.toString());
+            .body(result);
     }
 
     public ResponseEntity<D> findOne(UUID id) {
