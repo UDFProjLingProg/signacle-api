@@ -25,6 +25,15 @@ jobs:
         tags: ${{ github.ref_name }}, latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        build-args: |
+              SPRING_SECURITY_USER_NAME=${{ secrets.SPRING_SECURITY_USER_NAME }}
+              SPRING_SECURITY_USER_PASSWORD=${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
+              APPLICATION_SECURITY_JWT_SECRET_KEY=${{ secrets.APPLICATION_SECURITY_JWT_SECRETKEY }}
+              APPLICATION_FRONT_CONFIRMATION_URL=${{ secrets.APPLICATION_FRONT_CONFIRMATION_URL }}
+              SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }}
+              SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }}
+              SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
+              SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
     env:
       SPRING_SECURITY_USER_NAME: ${{ secrets.SPRING_SECURITY_USER_NAME }}
       SPRING_SECURITY_USER_PASSWORD: ${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
