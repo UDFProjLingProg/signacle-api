@@ -1,9 +1,13 @@
 package org.UDFProjLingProg.signacle.exceptions;
 
-import lombok.Getter;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.NOT_IMPLEMENTED;
+
 import org.springframework.http.HttpStatus;
 
-import static org.springframework.http.HttpStatus.*;
+import lombok.Getter;
 
 @Getter
 public enum ExceptionsCodes {

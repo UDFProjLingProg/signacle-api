@@ -1,13 +1,19 @@
 package org.UDFProjLingProg.signacle.entities;
 
-import jakarta.persistence.*;
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
+import org.UDFProjLingProg.signacle.constants.SchemaConstants;
+
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntity;
-import org.UDFProjLingProg.signacle.constants.SchemaConstants;
 
 @Data
 @NoArgsConstructor

@@ -1,7 +1,15 @@
 package org.UDFProjLingProg.signacle.exceptions;
 
-import jakarta.mail.MessagingException;
-import org.springframework.data.crossstore.ChangeSetPersister;
+import static org.UDFProjLingProg.signacle.exceptions.ExceptionsCodes.ACCOUNT_DISABLED;
+import static org.UDFProjLingProg.signacle.exceptions.ExceptionsCodes.ACCOUNT_LOCKED;
+import static org.UDFProjLingProg.signacle.exceptions.ExceptionsCodes.BAD_CREDENTIALS;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -10,11 +18,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.UDFProjLingProg.signacle.exceptions.ExceptionsCodes.*;
-import static org.springframework.http.HttpStatus.*;
+import jakarta.mail.MessagingException;
 
 @RestControllerAdvice
 public class ExceptionsHandler {

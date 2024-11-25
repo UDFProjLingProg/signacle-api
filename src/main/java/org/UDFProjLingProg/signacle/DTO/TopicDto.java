@@ -1,12 +1,9 @@
 package org.UDFProjLingProg.signacle.DTO;
 
-import java.sql.Timestamp;
-
-import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-
 import java.util.List;
-import java.util.UUID;
+
 import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

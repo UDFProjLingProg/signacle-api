@@ -1,5 +1,8 @@
 package org.UDFProjLingProg.signacle.service.impl;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.UDFProjLingProg.signacle.DTO.UserDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericServiceImpl;
 import org.UDFProjLingProg.signacle.entities.User;
@@ -8,9 +11,6 @@ import org.UDFProjLingProg.signacle.mapper.UserMapper;
 import org.UDFProjLingProg.signacle.repository.UserRepository;
 import org.UDFProjLingProg.signacle.service.IUserService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UsersServiceImpl extends GenericServiceImpl<User, UserDto> implements

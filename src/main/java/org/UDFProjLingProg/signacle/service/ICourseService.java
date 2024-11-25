@@ -1,10 +1,9 @@
 package org.UDFProjLingProg.signacle.service;
 
+import java.util.List;
+
 import org.UDFProjLingProg.signacle.DTO.CourseDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericService;
-import org.UDFProjLingProg.signacle.entities.Course;
-
-import java.util.List;
 
 public interface ICourseService extends GenericService<CourseDto> {
 

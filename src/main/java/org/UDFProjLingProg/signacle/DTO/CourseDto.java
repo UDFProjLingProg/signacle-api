@@ -1,11 +1,15 @@
 package org.UDFProjLingProg.signacle.DTO;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
-import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.UDFProjLingProg.signacle.Utils.Abstracts.AbstractEntityDTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @ToString

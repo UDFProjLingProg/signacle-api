@@ -1,5 +1,8 @@
 package org.UDFProjLingProg.signacle.service.impl;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.UDFProjLingProg.signacle.DTO.CourseDto;
 import org.UDFProjLingProg.signacle.DTO.TopicDto;
 import org.UDFProjLingProg.signacle.Utils.Generics.GenericServiceImpl;
@@ -10,9 +13,6 @@ import org.UDFProjLingProg.signacle.service.ICourseService;
 import org.UDFProjLingProg.signacle.service.ILibraService;
 import org.UDFProjLingProg.signacle.service.ITopicService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.UUID;
 
 @Service
 public class CourseServiceImpl extends GenericServiceImpl<Course, CourseDto> implements ICourseService {
