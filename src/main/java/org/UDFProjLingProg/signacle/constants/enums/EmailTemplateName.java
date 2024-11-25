@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum EmailTemplateName {
 
-    CREATE_ACCOUNT("create_acoount")
+    CREATE_ACCOUNT("create_account")
     ;
 
 
