@@ -1,4 +1,4 @@
-name: Maven Package
+name: Build and Deploy
 
 on:
   push:
@@ -6,18 +6,16 @@ on:
       - '*'
 
 jobs:
-  build:
-  
+  build-and-push:
     runs-on: ubuntu-latest
-  
     permissions:
       contents: read
       packages: write
-
+    
     steps:
     - uses: actions/checkout@v4
     
-    - name: buildd and push Docker Image
+    - name: Build and push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: signacleudf/signacle-api
@@ -26,21 +24,60 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         build-args: |
-              SPRING_SECURITY_USER_NAME=${{ secrets.SPRING_SECURITY_USER_NAME }}
-              SPRING_SECURITY_USER_PASSWORD=${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
-              APPLICATION_SECURITY_JWT_SECRET_KEY=${{ secrets.APPLICATION_SECURITY_JWT_SECRETKEY }}
-              APPLICATION_FRONT_CONFIRMATION_URL=${{ secrets.APPLICATION_FRONT_CONFIRMATION_URL }}
-              SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }}
-              SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }}
-              SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
-              SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
-    env:
-      SPRING_SECURITY_USER_NAME: ${{ secrets.SPRING_SECURITY_USER_NAME }}
-      SPRING_SECURITY_USER_PASSWORD: ${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
-      APPLICATION_SECURITY_JWT_SECRET-KEY: ${{ secrets.APPLICATION_SECURITY_JWT_SECRETKEY }}
-      APPLICATION_FRONT_CONFIRMATION_URL: ${{ secrets.APPLICATION_FRONT_CONFIRMATION_URL }}
-      SPRING_MAIL_USERNAME: ${{ secrets.SPRING_MAIL_USERNAME }}
-      SPRING_MAIL_PASSWORD: ${{ secrets.SPRING_MAIL_PASSWORD }}
-      SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
-      SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
-  
+          SPRING_SECURITY_USER_NAME=${{ secrets.SPRING_SECURITY_USER_NAME }}
+          SPRING_SECURITY_USER_PASSWORD=${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
+          APPLICATION_SECURITY_JWT_SECRET_KEY=${{ secrets.APPLICATION_SECURITY_JWT_SECRET_KEY }}
+          APPLICATION_FRONT_CONFIRMATION_URL=${{ secrets.APPLICATION_FRONT_CONFIRMATION_URL }}
+          SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }}
+          SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }}
+          SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Create deployment files
+      run: |
+        # Criar arquivo .env
+        cat << EOF > .env
+        SPRING_SECURITY_USER_NAME=${{ secrets.SPRING_SECURITY_USER_NAME }}
+        SPRING_SECURITY_USER_PASSWORD=${{ secrets.SPRING_SECURITY_USER_PASSWORD }}
+        APPLICATION_SECURITY_JWT_SECRET_KEY=${{ secrets.APPLICATION_SECURITY_JWT_SECRET_KEY }}
+        APPLICATION_FRONT_CONFIRMATION_URL=${{ secrets.APPLICATION_FRONT_CONFIRMATION_URL }}
+        SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }}
+        SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }}
+        SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
+        SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+        EOF
+        
+        # Criar script de deploy
+        cat << 'EOF' > deploy.sh
+        #!/bin/bash
+        docker-compose pull
+        docker-compose up -d
+        EOF
+        
+        chmod +x deploy.sh
+
+    - name: Deploy to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        source: "docker-compose.yml,.env,deploy.sh"
+        target: "/sistemas/signacle"
+        
+    - name: Execute deploy script
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: |
+          cd /sistemas/signacle
+          ./deploy.sh
