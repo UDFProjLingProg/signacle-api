@@ -20,7 +20,7 @@ jobs:
     - name: buildd and push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
-        image: eventslink/eventslink
+        image: signacleudf/signacle-api
         registry: docker.io
         tags: ${{ github.ref_name }}, latest
         username: ${{ secrets.DOCKER_USERNAME }}
