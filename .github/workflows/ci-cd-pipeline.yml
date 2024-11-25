@@ -53,15 +53,6 @@ jobs:
         SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
         SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
         EOF
-        
-        # Criar script de deploy
-        cat << 'EOF' > deploy.sh
-        #!/bin/bash
-        docker compose pull
-        docker compose up -d
-        EOF
-        
-        chmod +x deploy.sh
 
     - name: Deploy to server
       uses: appleboy/scp-action@master
