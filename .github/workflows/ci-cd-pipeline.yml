@@ -67,7 +67,7 @@ jobs:
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
         source: "docker-compose.yml,.env,deploy.sh"
         target: "/sistemas/signacle"
-        debug: true
+        use_insecure_cipher: true
         
     - name: Execute deploy script
       uses: appleboy/ssh-action@master
@@ -77,6 +77,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
+        use_insecure_cipher: true
         script: |
           cd /sistemas/signacle
           ./deploy.sh
