@@ -65,9 +65,6 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-        ssh_config: |
-          StrictHostKeyChecking=no
-          UserKnownHostsFile=/dev/null
         source: "docker-compose.yml,.env,deploy.sh"
         target: "/sistemas/signacle"
         debug: true
@@ -80,9 +77,6 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-        ssh_config: |
-          StrictHostKeyChecking=no
-          UserKnownHostsFile=/dev/null
         script: |
           cd /sistemas/signacle
           ./deploy.sh
