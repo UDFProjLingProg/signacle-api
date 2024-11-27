@@ -57,21 +57,6 @@ jobs:
         SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
         EOF
 
-    - name: Debug SSH Connection
-      run: |
-        # Criar arquivo de chave temporário
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        
-        # Testar conexão SSH
-        ssh -vvv \
-          -i ~/.ssh/id_rsa \
-          -p ${{ secrets.PORT }} \
-          ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} \
-          "echo 'SSH Connection Successful'"
-
     - name: Deploy to server
       uses: appleboy/scp-action@master
       with:
@@ -80,6 +65,9 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
+        ssh_config: |
+          StrictHostKeyChecking=no
+          UserKnownHostsFile=/dev/null
         source: "docker-compose.yml,.env,deploy.sh"
         target: "/sistemas/signacle"
         debug: true
@@ -92,6 +80,9 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
+        ssh_config: |
+          StrictHostKeyChecking=no
+          UserKnownHostsFile=/dev/null
         script: |
           cd /sistemas/signacle
           ./deploy.sh
