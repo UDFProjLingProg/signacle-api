@@ -57,19 +57,13 @@ jobs:
         SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
         EOF
 
-    - name: Configurar chave privada
+    - name: Prepare SSH
       run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-      
-    - name: Adicionar host remoto ao known_hosts
-      run: |
-          ssh-keyscan -p 1089 signacle.duckdns.org >> ~/.ssh/known_hosts
-      
-    - name: Conectar ao servidor
-      run: |
-          ssh -p 1089 -i ~/.ssh/id_rsa arturmartins@signacle.duckdns.org "echo Conexão bem-sucedida!"
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keygen -y -f ~/.ssh/id_ed25519
 
     - name: Deploy to server
       uses: appleboy/scp-action@master
@@ -79,9 +73,8 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
         passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-        source: "docker-compose.yml,.env,deploy.sh"
+        source: "docker-compose.yml,.env"
         target: "/sistemas/signacle"
-        use_insecure_cipher: true
         
     - name: Execute deploy script
       uses: appleboy/ssh-action@master
