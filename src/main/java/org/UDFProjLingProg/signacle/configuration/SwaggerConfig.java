@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         ),
         @Server(
             description = "Prod Env",
-            url = "http://signacle.duckdns.org:1246/"
+            url = "https://signacle.duckdns.org:1246/"
         )
     },
     security = {
