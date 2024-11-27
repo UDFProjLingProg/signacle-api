@@ -74,6 +74,8 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
+        port: ${{ secrets.PORT }}
+        passphrase: ${{ secrets.SERVER_PASSPHRASE }}
         script: |
           cd /sistemas/signacle
           ./deploy.sh
