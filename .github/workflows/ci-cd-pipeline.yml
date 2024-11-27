@@ -64,6 +64,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.PORT }}
+        passphrase: ${{ secrets.SERVER_PASSPHRASE }}
         source: "docker-compose.yml,.env,deploy.sh"
         target: "/sistemas/signacle"
         
