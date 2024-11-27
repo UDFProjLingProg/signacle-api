@@ -57,6 +57,20 @@ jobs:
         SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
         EOF
 
+    - name: Configurar chave privada
+      run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+      
+    - name: Adicionar host remoto ao known_hosts
+      run: |
+          ssh-keyscan -p 1089 signacle.duckdns.org >> ~/.ssh/known_hosts
+      
+    - name: Conectar ao servidor
+      run: |
+          ssh -p 1089 -i ~/.ssh/id_rsa arturmartins@signacle.duckdns.org "echo Conexão bem-sucedida!"
+
     - name: Deploy to server
       uses: appleboy/scp-action@master
       with:
